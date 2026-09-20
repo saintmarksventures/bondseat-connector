@@ -2,8 +2,8 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "io.github.saintmarksventures/bondseat",
   "title": "BondSeat",
-  "description": "Find restaurants and automate Resy bookings: cancellation monitoring and scheduled release attempts.",
-  "version": "0.1.1",
+  "description": "Snag hard-to-get Resy tables with automatic cancellation monitoring and scheduled release attempts.",
+  "version": "0.1.2",
   "websiteUrl": "https://bond-seat.com/agents",
   "repository": {
     "url": "https://github.com/saintmarksventures/bondseat-connector",
@@ -13,7 +13,7 @@
     {
       "registryType": "npm",
       "identifier": "@bondseat/mcp",
-      "version": "0.1.1",
+      "version": "0.1.2",
       "transport": {
         "type": "stdio"
       },

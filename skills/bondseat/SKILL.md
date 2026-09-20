@@ -1,6 +1,6 @@
 ---
 name: bondseat
-description: Find restaurants and arrange automatic Resy reservations through BondSeat, including cancellation monitoring, scheduled release attempts, booking status, and stopping future attempts. Use when a diner wants a table or wants to manage a BondSeat request.
+description: Snag hard-to-get tables on Resy. BondSeat watches for cancellations or tries to book right when reservations open, then automatically books a table that matches your preferences. BondSeat carefully manages your credentials and paces availability checks, keeping routine monitoring separate from your personal Resy account. Use when a diner wants a restaurant reservation, cancellation monitoring, a scheduled release attempt, or to check or stop a BondSeat request.
 license: MIT-0
 metadata:
   openclaw:
@@ -11,8 +11,11 @@ metadata:
 
 # BondSeat
 
-BondSeat monitors cancellations or attempts a known reservation release and books
-automatically within the diner's authorized details. The account-free flow supports
+Snag hard-to-get tables on Resy. BondSeat watches for cancellations or tries to book right when reservations open, then automatically books a table that matches your preferences.
+
+BondSeat carefully manages your credentials and paces availability checks, keeping routine monitoring separate from your personal Resy account.
+
+Bookings stay within the diner's authorized details. The account-free flow supports
 Resy, costs $10 USD per successful booking, and charges nothing for unsuccessful
 requests. The diner connects Resy and authorizes the displayed fee on a hosted setup
 page; no BondSeat signup or BondBucks purchase is needed.
@@ -23,7 +26,7 @@ Requires Node.js 22 or newer and network access to npm and BondSeat. Use connect
 `bondseat_*` MCP tools when available. Otherwise invoke the versioned CLI:
 
 ```sh
-npx --yes --package=@bondseat/mcp@0.1.1 bondseat restaurants <<'BONDSEAT_INPUT'
+npx --yes --package=@bondseat/mcp@0.1.2 bondseat restaurants <<'BONDSEAT_INPUT'
 {"q":"La Vara","city":"Brooklyn"}
 BONDSEAT_INPUT
 ```

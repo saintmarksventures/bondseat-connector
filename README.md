@@ -1,5 +1,9 @@
 # BondSeat connector
 
+Snag hard-to-get tables on Resy. BondSeat watches for cancellations or tries to book right when reservations open, then automatically books a table that matches your preferences.
+
+BondSeat carefully manages your credentials and paces availability checks, keeping routine monitoring separate from your personal Resy account.
+
 The agent uses booking tools. The connector keeps the access token, setup codes,
 retry identifiers and polling state private. The diner only opens a setup link.
 No token needs to be copied into chat or remembered by the agent.
@@ -17,7 +21,7 @@ Requires Node.js 22 or newer. Configure an MCP client that supports local stdio:
   "mcpServers": {
     "bondseat": {
       "command": "npx",
-      "args": ["--yes", "@bondseat/mcp@0.1.1"]
+      "args": ["--yes", "@bondseat/mcp@0.1.2"]
     }
   }
 }
@@ -32,9 +36,9 @@ separately authorizes BondSeat's fee through Stripe.
 The executable starts MCP when called without arguments. A CLI is also available:
 
 ```sh
-npx --yes @bondseat/mcp@0.1.1 --help
-npx --yes @bondseat/mcp@0.1.1 schema request
-npx --yes @bondseat/mcp@0.1.1 restaurants <<'BONDSEAT_INPUT'
+npx --yes @bondseat/mcp@0.1.2 --help
+npx --yes @bondseat/mcp@0.1.2 schema request
+npx --yes @bondseat/mcp@0.1.2 restaurants <<'BONDSEAT_INPUT'
 {"q":"La Vara","city":"Brooklyn"}
 BONDSEAT_INPUT
 ```

@@ -1,6 +1,6 @@
 {
   "name": "@bondseat/mcp",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "module",
   "scripts": {
     "test": "node --test *.test.mjs"
@@ -13,7 +13,7 @@
   "devDependencies": {
     "typescript": "5.2.2"
   },
-  "description": "Find restaurants, monitor cancellations and schedule automatic Resy bookings through BondSeat.",
+  "description": "Snag hard-to-get tables on Resy. BondSeat watches for cancellations or tries to book right when reservations open, then automatically books a table that matches your preferences. BondSeat carefully manages your credentials and paces availability checks, keeping routine monitoring separate from your personal Resy account.",
   "license": "MIT",
   "homepage": "https://bond-seat.com/agents",
   "repository": {
