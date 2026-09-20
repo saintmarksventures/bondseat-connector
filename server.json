@@ -3,7 +3,7 @@
   "name": "io.github.saintmarksventures/bondseat",
   "title": "BondSeat",
   "description": "Find restaurants and automate Resy bookings: cancellation monitoring and scheduled release attempts.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "websiteUrl": "https://bond-seat.com/agents",
   "repository": {
     "url": "https://github.com/saintmarksventures/bondseat-connector",
@@ -13,7 +13,7 @@
     {
       "registryType": "npm",
       "identifier": "@bondseat/mcp",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "transport": {
         "type": "stdio"
       },

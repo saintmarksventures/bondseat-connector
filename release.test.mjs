@@ -18,9 +18,8 @@ test('published tarball installs independently and exposes MCP plus CLI through 
   const { stdout } = await exec('npm', ['pack', '--json', '--pack-destination', dir], { cwd: root });
   const [pack] = JSON.parse(stdout);
   const files = pack.files.map(file => file.path);
-  assert.ok(files.includes('skills/bondseat/SKILL.md'));
-  assert.ok(files.includes('server.json'));
-  assert.ok(!files.some(path => /test\.mjs$|node_modules|\.env|state\.json|PUBLISHING/.test(path)));
+  assert.deepEqual(files.sort(), ['LICENSE', 'README.md', 'cli.mjs', 'connector.mjs', 'package.json',
+    'runtime.mjs', 'server.json', 'server.mjs', 'skills/bondseat/LICENSE', 'skills/bondseat/SKILL.md', 'tools.mjs'].sort());
   await writeFile(join(dir, 'package.json'), '{"private":true}');
   await exec('npm', ['install', '--ignore-scripts', '--no-audit', '--no-fund', join(dir, pack.filename)], { cwd: dir, timeout: 90000 });
   const pkg = JSON.parse(await readFile(join(root, 'package.json'), 'utf8'));
@@ -44,6 +43,12 @@ test('published tarball installs independently and exposes MCP plus CLI through 
   await client.connect(transport);
   assert.equal(client.getServerVersion().version, pkg.version);
   const tools = await client.listTools();
-  assert.equal(tools.tools.length, 7);
-  assert.ok(tools.tools.some(tool => tool.name === 'bondseat_request'));
+  assert.deepEqual(tools.tools.map(tool => tool.name).sort(), ['connect', 'request', 'requests',
+    'restaurants', 'resume', 'status', 'stop'].map(name => `bondseat_${name}`).sort());
+  // MCP-only clients receive these descriptions, not the bundled SKILL.md.
+  const description = name => tools.tools.find(tool => tool.name === `bondseat_${name}`).description;
+  assert.match(description('request'), /schedule status checks.*does not push updates/);
+  assert.match(description('status'), /Schedule follow-up calls.*notify the diner/);
+  assert.match(description('status'), /cannot schedule follow-ups, say so/);
+  assert.match(description('stop'), /verify_provider.*check their reservations/);
 });

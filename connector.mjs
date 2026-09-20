@@ -73,7 +73,7 @@ export class BondSeatConnector {
 
   setupResult(pending) {
     return { status: 'setup_required', setupUrl: pending.setupUrl, pollAfterSeconds: Math.max(5, Math.ceil((pending.nextPollAt - this.now()) / 1000)),
-      message: 'Open the setup link, then check status. BondSeat handles the booking; you do not need to copy any credentials.' };
+      message: 'Show the setup link and schedule status after pollAfterSeconds. Continue through setup to the booking outcome and notify the diner. This connector does not push updates or schedule itself; if your runtime cannot follow up, say so. Never copy credentials or submit another request to check progress.' };
   }
 
   async poll(state, save) {

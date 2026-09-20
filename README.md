@@ -17,7 +17,7 @@ Requires Node.js 22 or newer. Configure an MCP client that supports local stdio:
   "mcpServers": {
     "bondseat": {
       "command": "npx",
-      "args": ["--yes", "@bondseat/mcp@0.1.0"]
+      "args": ["--yes", "@bondseat/mcp@0.1.1"]
     }
   }
 }
@@ -32,9 +32,9 @@ separately authorizes BondSeat's fee through Stripe.
 The executable starts MCP when called without arguments. A CLI is also available:
 
 ```sh
-npx --yes @bondseat/mcp@0.1.0 --help
-npx --yes @bondseat/mcp@0.1.0 schema request
-npx --yes @bondseat/mcp@0.1.0 restaurants <<'BONDSEAT_INPUT'
+npx --yes @bondseat/mcp@0.1.1 --help
+npx --yes @bondseat/mcp@0.1.1 schema request
+npx --yes @bondseat/mcp@0.1.1 restaurants <<'BONDSEAT_INPUT'
 {"q":"La Vara","city":"Brooklyn"}
 BONDSEAT_INPUT
 ```
@@ -86,7 +86,17 @@ this package does not expose an HTTP MCP endpoint.
 4. Call `bondseat_status({})` after `pollAfterSeconds` to finish setup. It returns
    the started request; closing/restarting the connector preserves setup state.
 5. `bondseat_status({kind, id})` reads saved status. Reads are cached for 60 seconds.
-   Monitor `outcome: FIRED` or scheduled `status: SUCCEEDED` means booked.
+   Schedule these calls with the agent runtime's background/scheduled task facility;
+   the connector does not schedule itself or push updates. Continue after the chat turn ends
+   until `terminal` or user action is needed, then notify the diner and end that follow-up.
+   Monitor `outcome: FIRED` (even with `status: PAUSED`) or scheduled `status: SUCCEEDED`
+   means booked. Report the actual `bookedSlot` and dining details; follow `agentInstruction`.
+   If the runtime cannot schedule follow-ups, disclose that and share the BondSeat manage page.
+   Never promise a proactive update without scheduling one.
+   Cancellation with `nextAction: verify_provider` leaves the booking outcome unconfirmed.
+   Ask the diner to check their reservations with the provider; an in-flight attempt may still
+   finish. Do not claim no booking exists or keep polling indefinitely. Later status reads
+   can still report a completed booking.
 6. If credentials need repair, show the returned reconnect link, then use
    `bondseat_resume({kind, id})` when authorized. `bondseat_connect({})` restores
    expired connector access without creating/resuming work or collecting a card.

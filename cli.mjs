@@ -29,7 +29,7 @@ export async function runCli(args, { stdin = process.stdin, stdout = process.std
     const { Client } = await import('@modelcontextprotocol/sdk/client/index.js');
     const { InMemoryTransport } = await import('@modelcontextprotocol/sdk/inMemory.js');
     const server = createServer({ call() { throw new Error('Schema inspection cannot invoke tools.'); } });
-    const client = new Client({ name: 'bondseat-schema', version: '0.1.0' });
+    const client = new Client({ name: 'bondseat-schema', version: '0.1.1' });
     const [clientTransport, serverTransport] = InMemoryTransport.createLinkedPair();
     try {
       await server.connect(serverTransport); await client.connect(clientTransport);

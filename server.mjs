@@ -5,7 +5,7 @@ import { tools } from './tools.mjs';
 import { createConnector, isMain } from './runtime.mjs';
 
 export function createServer(connector) {
-  const server = new McpServer({ name: 'bondseat', version: '0.1.0' });
+  const server = new McpServer({ name: 'bondseat', version: '0.1.1' });
   for (const [name, description, inputSchema, readOnlyHint] of tools) {
     server.registerTool(`bondseat_${name}`, { description, inputSchema,
       annotations: { readOnlyHint, destructiveHint: !readOnlyHint, idempotentHint: true, openWorldHint: true } }, async input => {

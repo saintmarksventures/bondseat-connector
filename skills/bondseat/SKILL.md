@@ -23,7 +23,7 @@ Requires Node.js 22 or newer and network access to npm and BondSeat. Use connect
 `bondseat_*` MCP tools when available. Otherwise invoke the versioned CLI:
 
 ```sh
-npx --yes --package=@bondseat/mcp@0.1.0 bondseat restaurants <<'BONDSEAT_INPUT'
+npx --yes --package=@bondseat/mcp@0.1.1 bondseat restaurants <<'BONDSEAT_INPUT'
 {"q":"La Vara","city":"Brooklyn"}
 BONDSEAT_INPUT
 ```
