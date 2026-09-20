@@ -1,0 +1,39 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.saintmarksventures/bondseat",
+  "title": "BondSeat",
+  "description": "Find restaurants and automate Resy bookings: cancellation monitoring and scheduled release attempts.",
+  "version": "0.1.0",
+  "websiteUrl": "https://bond-seat.com/agents",
+  "repository": {
+    "url": "https://github.com/saintmarksventures/bondseat-connector",
+    "source": "github"
+  },
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "@resbot/bondseat-connector",
+      "version": "0.1.0",
+      "transport": {
+        "type": "stdio"
+      },
+      "runtimeHint": "npx",
+      "environmentVariables": [
+        {
+          "name": "BONDSEAT_API_URL",
+          "description": "Trusted HTTPS BondSeat REST API base. Defaults to production; override only for a configured environment.",
+          "format": "string",
+          "isRequired": false,
+          "isSecret": false
+        },
+        {
+          "name": "BONDSEAT_STATE_FILE",
+          "description": "Absolute path to private persistent storage for one diner. Defaults to ~/.bondseat/connection.json. Use a separate file per diner and environment.",
+          "format": "filepath",
+          "isRequired": false,
+          "isSecret": false
+        }
+      ]
+    }
+  ]
+}

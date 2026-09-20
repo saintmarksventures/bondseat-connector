@@ -1,0 +1,4 @@
+{
+  "compilerOptions": { "allowJs": true, "checkJs": false, "noEmit": true, "target": "es2022", "module": "nodenext", "skipLibCheck": true },
+  "include": ["*.mjs"]
+}

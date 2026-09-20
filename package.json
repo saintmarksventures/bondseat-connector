@@ -1,0 +1,52 @@
+{
+  "name": "@resbot/bondseat-connector",
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "test": "node --test *.test.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.30.0",
+    "proper-lockfile": "4.1.2",
+    "zod": "^3.25.76"
+  },
+  "devDependencies": {
+    "typescript": "5.2.2"
+  },
+  "description": "Find restaurants, monitor cancellations and schedule automatic Resy bookings through BondSeat.",
+  "license": "MIT",
+  "homepage": "https://bond-seat.com/agents",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/saintmarksventures/bondseat-connector.git"
+  },
+  "mcpName": "io.github.saintmarksventures/bondseat",
+  "bin": {
+    "bondseat": "cli.mjs"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "files": [
+    "cli.mjs",
+    "connector.mjs",
+    "runtime.mjs",
+    "server.mjs",
+    "tools.mjs",
+    "server.json",
+    "skills/bondseat/SKILL.md",
+    "skills/bondseat/LICENSE",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "keywords": [
+    "mcp",
+    "bondseat",
+    "resy",
+    "restaurant",
+    "reservations",
+    "openclaw"
+  ]
+}
