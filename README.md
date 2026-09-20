@@ -1,9 +1,5 @@
 # BondSeat connector
 
-Initial release preparation: npm, ClawHub, and MCP Registry publication is pending.
-Until then, clone this repository, run `npm install`, and launch `node server.mjs`
-for MCP or `node cli.mjs --help` for CLI usage.
-
 The agent uses booking tools. The connector keeps the access token, setup codes,
 retry identifiers and polling state private. The diner only opens a setup link.
 No token needs to be copied into chat or remembered by the agent.
@@ -21,7 +17,7 @@ Requires Node.js 22 or newer. Configure an MCP client that supports local stdio:
   "mcpServers": {
     "bondseat": {
       "command": "npx",
-      "args": ["--yes", "@resbot/bondseat-connector@0.1.0"]
+      "args": ["--yes", "@bondseat/mcp@0.1.0"]
     }
   }
 }
@@ -36,9 +32,9 @@ separately authorizes BondSeat's fee through Stripe.
 The executable starts MCP when called without arguments. A CLI is also available:
 
 ```sh
-npx --yes @resbot/bondseat-connector@0.1.0 --help
-npx --yes @resbot/bondseat-connector@0.1.0 schema request
-npx --yes @resbot/bondseat-connector@0.1.0 restaurants <<'BONDSEAT_INPUT'
+npx --yes @bondseat/mcp@0.1.0 --help
+npx --yes @bondseat/mcp@0.1.0 schema request
+npx --yes @bondseat/mcp@0.1.0 restaurants <<'BONDSEAT_INPUT'
 {"q":"La Vara","city":"Brooklyn"}
 BONDSEAT_INPUT
 ```
